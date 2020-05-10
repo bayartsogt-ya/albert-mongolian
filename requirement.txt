@@ -1,0 +1,7 @@
+nltk
+sentencepiece
+requests
+tqdm
+patool
+EbookLib
+beautifulsoup4

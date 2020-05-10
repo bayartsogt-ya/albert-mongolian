@@ -1,0 +1,6 @@
+[submodule "wikiextractor"]
+	path = wikiextractor
+	url = https://github.com/attardi/wikiextractor
+[submodule "albert"]
+	path = albert
+	url = https://github.com/google-research/albert
