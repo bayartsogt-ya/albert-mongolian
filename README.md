@@ -1,9 +1,15 @@
 # ALBERT-Mongolian
 ALBERT for Mongolian
 
+We provide pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
+
+As stated by official contributor [here](https://github.com/google-research/ALBERT/issues/104#issuecomment-548636183), we used only 512 for *max sequence length*.
+
+Here we plannig to put pretraining loss
+![Pretraining Loss](./images/pretraining_loss.png)
 
 ## Pretrain from Scratch
-### Install Required packeges
+### Install Required packages
 ```
 pip install -r requirement.txt
 ```
