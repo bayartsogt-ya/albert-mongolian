@@ -11,7 +11,8 @@ MN_WIKI_FILE = 'mn_wiki.txt'
 MN_CORPUS_FOLDER = 'mn_corpus'
 MN_WIKI_RAR_FILE = 'mn_wiki.bz2'
 MN_WIKI_EXTRACT_FOLDER = 'tmp_mn_wiki'
-MN_WIKI_URL = 'https://dumps.wikimedia.org/mnwiki/20181220/mnwiki-20181220-pages-articles-multistream.xml.bz2'
+# MN_WIKI_URL = 'https://dumps.wikimedia.org/mnwiki/20181220/mnwiki-20181220-pages-articles-multistream.xml.bz2'
+MN_WIKI_URL = 'https://dumps.wikimedia.org/mnwiki/20200501/mnwiki-20200501-pages-articles-multistream.xml.bz2'
 
 
 # create corpus directory
