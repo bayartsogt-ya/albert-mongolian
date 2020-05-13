@@ -51,20 +51,40 @@ python -m albert.run_pretraining \
     --albert_config_file=... \
     --do_train \
     --do_eval \
-    --train_batch_size=4096 \
+    --train_batch_size=512 \
     --eval_batch_size=64 \
     --max_seq_length=512 \
     --max_predictions_per_seq=20 \
     --optimizer='lamb' \
     --learning_rate=.00176 \
-    --num_train_steps=125000 \
+    --num_train_steps=1000000 \
     --num_warmup_steps=3125 \
     --save_checkpoints_steps=10000
 ```
-## Evaluation
 
+## Evaluation
+### TODO after pretraining done
+- [ ] Loss Analysis 
+- [ ] Comparison with Mongolian BERT and mBERT
+- [ ] Benchmark цэгцлэх (Eduge classification, MN NER etc)
+- [ ] Pre-trained model paper? https://arxiv.org/abs/1912.00690 ...
+- [ ] ...
 
 ## Reference
-1. 
+1. [ALBERT - official repo](https://github.com/google-research/albert)
+2. [WikiExtrator](https://github.com/attardi/wikiextractor)
+3. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
+4. You's paper
+5. ...
 
 ## Citation
+```
+@misc{albert-mongolian,
+  author = {Bayartsogt Yadamsuren},
+  title = {ALBERT Pretrained Model on Mongolian Datasets},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/bayartsogt-ya/albert-mongolian/}}
+}
+```
