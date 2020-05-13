@@ -11,22 +11,27 @@ Here we plannig to put pretraining loss
 ![Pretraining Loss](./images/pretraining_loss.png)
 
 ## Pretrain from Scratch
+
 ### Install Required packages
 ```
+git clone --recurse-submodules https://github.com/bayartsogt-ya/albert-mongolian.git
 pip install -r requirement.txt
 ```
+
 ### Download data
 ```bash
 python3 datasets/dl_and_preprop_mn_wiki.py         # Mongolian Wikipedia
 python3 datasets/dl_and_preprop_mn_news.py         # 700 million words Mongolian news data set
 cat mn_corpus/*.txt > all.txt                      # Put them all to one file
 ```
+
 ### Train SentencePiece model
 First you need to [install sentencepiece from source](https://github.com/google/sentencepiece#c-from-source)
 Then start training (which requires ~30GB memory)
 ```
 train_spm_model.sh
 ```
+
 ### Build tf records for pretraining
 Now you can use `mn_corpus/*.txt` to produce `*tf_record` files. Here the first parameter is path to `*.txt` files and second one for max sequence length.
 ```bash
@@ -36,13 +41,30 @@ After the above command produces `*.tf_record` files, you should upload them to 
 ```source
 gsutil -m cp ./mn_corpus/*.tf_record gs://YOU_BUCKET/folder/
 ```
+
 ### Start Pretraining
+```bash
+python -m albert.run_pretraining \
+    --input_file=... \
+    --output_dir=... \
+    --init_checkpoint=... \
+    --albert_config_file=... \
+    --do_train \
+    --do_eval \
+    --train_batch_size=4096 \
+    --eval_batch_size=64 \
+    --max_seq_length=512 \
+    --max_predictions_per_seq=20 \
+    --optimizer='lamb' \
+    --learning_rate=.00176 \
+    --num_train_steps=125000 \
+    --num_warmup_steps=3125 \
+    --save_checkpoints_steps=10000
 ```
-```
-
-
 ## Evaluation
 
+
 ## Reference
+1. 
 
 ## Citation
