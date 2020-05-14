@@ -1,6 +1,16 @@
 # ALBERT-Mongolian
 ALBERT for Mongolian
 
+## Dev Notes
+| No | Started Date | Ended Date |    size    | seq128*1 | seq512*2 | tpu name  | output dir | tmux name |
+| -- | --           | --         |    --      | --       | --       | --        | --         | --        |
+|  1 | May 13, 20   | -          |    base    | 0        | 1M       | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
+|  2 | May 14, 20   | -          |    base    | 900k     | 100k     | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_512 | pretrain-1 |
+|  3 | May 14, 20   | -          |    large   | 900k     | 100k     | -         | - | pretrain-2 |
+
++ `seq128*1 -> max sequence length`
++ `seq128*2 -> max sequence length`
+
 This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
 
 As config file, the one [official repo provided](https://tfhub.dev/google/albert_base/3) is used.
