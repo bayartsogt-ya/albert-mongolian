@@ -2,11 +2,15 @@
 ALBERT for Mongolian
 
 ## Dev Notes
-| No | Started Date | Ended Date |    size    | seq128 (1) | seq512 (2) | tpu name  | output dir | tmux name |
-| -- | --           | --         |    --      | --         | --         | --        | --         | --        |
-|  1 | May 13, 20   | -          |    base    | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
-|  2 | May 14, 20   | -          |    base    | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_512 | pretrain-1 |
-|  3 | May 14, 20   | -          |    large   | 900k       | 100k       | -         | - | pretrain-3 |
+| No | Started Date | Ended Date | model size | batch size | seq128 (1) | seq512 (2) | tpu name  | output dir | tmux name |
+| -- | --           | --         |    --      |     --     | --         | --         | --        | --         | --        |
+|  1 | May 13, 20   | -          |    base    |     512    | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
+|  2 | May 14, 20   | -          |    base    |     512    | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_512 | pretrain-1 |
+|  3 | not started  | -          |    base    |     512    | 0          | 4M         | -         | - | - |
+|  4 | May 14, 20   | -          |    large   |     ?      | 900k       | 100k       | -         | - | - |
+|  5 | May 14, 20   | -          |   xlarge   |     --     | 900k       | 100k       | -         | - | - |
+|  6 | May 14, 20   | -          |  xxlarge   |     --     | 900k       | 100k       | -         | - | - |
+|  6 | May 14, 20   | -          |  xxlarge   |     --     | 0          | 4M         | -         | - | - |
 
 * `(1) -> max sequence length 128`
 * `(2) -> max sequence length 512`
@@ -29,6 +33,7 @@ pip install -r requirement.txt
 ```
 
 ### Download data
+This section is done by [tugstugi/mongolian-bert#data-preparation](https://github.com/tugstugi/mongolian-bert#data-preparation)
 ```bash
 python3 datasets/dl_and_preprop_mn_wiki.py         # Mongolian Wikipedia
 python3 datasets/dl_and_preprop_mn_news.py         # 700 million words Mongolian news data set
@@ -45,7 +50,7 @@ train_spm_model.sh
 ### Build tf records for pretraining
 Now you can use `mn_corpus/*.txt` to produce `*tf_record` files. Here the first parameter is path to `*.txt` files and second one for max sequence length.
 ```bash
-source build_pretraining_data.sh  ./mn_corpus  512
+source build_pretraining_data.sh ./mn_corpus 512
 ```
 After the above command produces `*.tf_record` files, you should upload them to Google Cloud Storage (GCS).
 ```source
@@ -69,7 +74,11 @@ python -m albert.run_pretraining \
     --learning_rate=.00176 \
     --num_train_steps=1000000 \
     --num_warmup_steps=3125 \
-    --save_checkpoints_steps=10000
+    --save_checkpoints_steps=10000 \
+    --use_tpu=true \
+    --tpu_name=your_tpu_name \
+    --tpu_zone=your_tpu_zone \
+    --num_tpu_cores=8
 ```
 
 ## Evaluation
