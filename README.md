@@ -2,24 +2,28 @@
 ALBERT for Mongolian
 
 ## Dev Notes
+**TODO**
+- [ ] uncased sentencepiece training
+- [ ] uncased tf record build
+- [ ] uncased albert-base training (maybe on tpu v2?)
+- [ ] 
+- [ ] 
+
+**Training log:**
 | No | Started Date | Ended Date | model size | batch size | seq128 (1) | seq512 (2) | tpu name  | output dir | tmux name |
 | -- | --           | --         |    --      |     --     | --         | --         | --        | --         | --        |
-|  1 | May 13, 20   | -          |    base    |     512    | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
-|  2 | May 14, 20   | -          |    base    |     512    | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_512 | pretrain-1 |
-|  3 | not started  | -          |    base    |     512    | 0          | 4M         | -         | - | - |
-|  4 | May 14, 20   | -          |    large   |     ?      | 900k       | 100k       | -         | - | - |
-|  5 | May 14, 20   | -          |   xlarge   |     --     | 900k       | 100k       | -         | - | - |
-|  6 | May 14, 20   | -          |  xxlarge   |     --     | 900k       | 100k       | -         | - | - |
-|  6 | May 14, 20   | -          |  xxlarge   |     --     | 0          | 4M         | -         | - | - |
+| 1  | May 13, 20   | -          |  base      | 512        | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
+| 2  | May 14, 20   | -          |  base      | 512        | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_* | pretrain-1 |
+| 3  | May 14, 20   | -          |  large     | 512        | 900k       | 100k       | node-2    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain3/output_* | pretrain-3 |
+| 4  | May 14, 20   | -          |  xlarge    | 128        | 3.6M       | 400k       | node-3    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain4/output_* | pretrain-4 |
+| 5  | not started  | -          |  base      | 512        | 0          | 4M         | -         | this will continue training #1 | - |
+| 6  |              | -          |  xxlarge   | --         | 900k       | 100k       | -         | - | - |
+| 7  |              | -          |  BERT-large| 512        | 0          | 4M         | -         | - | - |
 
 * `(1) -> max sequence length 128`
 * `(2) -> max sequence length 512`
 
 This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
-
-As config file, the one [official repo provided](https://tfhub.dev/google/albert_base/3) is used.
-
-As stated by official contributor [here](https://github.com/google-research/ALBERT/issues/104#issuecomment-548636183), we used only 512 for *max sequence length*.
 
 Here we plannig to put pretraining loss
 ![Pretraining Loss](./images/pretraining_loss.png)
@@ -43,15 +47,26 @@ cat mn_corpus/*.txt > all.txt                      # Put them all to one file
 ### Train SentencePiece model
 First you need to [install sentencepiece from source](https://github.com/google/sentencepiece#c-from-source)
 Then start training (which requires ~30GB memory)
+
+if you are training uncased model, you need to lowercase the input data.
+```bash
+python do_lowercase.py --input ./all.txt --output ./all_lowercased.txt
+# train_spm_model.sh [INPUT_FILE_PATH] [SP_MODEL_PATH]
+train_spm_model.sh ./all.txt 30k-mn-uncased
 ```
-train_spm_model.sh
+
+Otherwise, just run:
+```
+train_spm_model.sh ./all.txt 30k-mn-cased
 ```
 
 ### Build tf records for pretraining
 Now you can use `mn_corpus/*.txt` to produce `*tf_record` files. Here the first parameter is path to `*.txt` files and second one for max sequence length.
 ```bash
-source build_pretraining_data.sh ./mn_corpus 512
+# source build_pretraining_data.sh [BASE_DIR] [MAX_SEQ_LEN] [SP_MODEL_PREFIX]
+source build_pretraining_data.sh ./mn_corpus 512 30k-mn-cased
 ```
+
 After the above command produces `*.tf_record` files, you should upload them to Google Cloud Storage (GCS).
 ```source
 gsutil -m cp ./mn_corpus/*.tf_record gs://YOU_BUCKET/folder/
@@ -93,7 +108,7 @@ python -m albert.run_pretraining \
 1. [ALBERT - official repo](https://github.com/google-research/albert)
 2. [WikiExtrator](https://github.com/attardi/wikiextractor)
 3. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
-4. You's paper
+4. [You's paper](https://arxiv.org/abs/1904.00962)
 5. ...
 
 ## Citation
@@ -107,3 +122,5 @@ python -m albert.run_pretraining \
   howpublished = {\url{https://github.com/bayartsogt-ya/albert-mongolian/}}
 }
 ```
+
+## Thank you
