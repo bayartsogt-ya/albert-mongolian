@@ -16,14 +16,14 @@ Tensorboard Link => https://colab.research.google.com/drive/1QVRmC73yImJL1U0Vvhc
 | 2  | May 14, 20   | -          |  base      | 512        | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_* | pretrain-1 |
 | 3  | May 14, 20   | -          |  large     | 512        | 900k       | 100k       | node-2    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain3/output_* | pretrain-3 |
 | 4  | May 14, 20   | -          |  xlarge    | 128        | 3.6M       | 400k       | node-3    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain4/output_* | pretrain4 |
-| 5  | not started  | -          |  base      | 512        | 0          | 4M         | -         | this will continue training #1 | - |
+| 5  | May 16, 20   | -          |  base      | 512        | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain5/output_* | pretrain-5 |
 | 6  |              | -          |  xxlarge   | --         | 900k       | 100k       | -         | - | - |
 | 7  |              | -          |  BERT-large| 512        | 0          | 4M         | -         | - | - |
 
 * `(1) -> max sequence length 128`
 * `(2) -> max sequence length 512`
 
-This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
+This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
 
 Here we plannig to put pretraining loss
 ![Pretraining Loss](./images/pretraining_loss.png)
