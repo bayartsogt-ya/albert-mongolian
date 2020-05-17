@@ -17,9 +17,9 @@ Tensorboard Link => https://colab.research.google.com/drive/1QVRmC73yImJL1U0Vvhc
 | 3  | May 14, 20   | -          |  large     | 512        | 900k       | 100k       | node-2    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain3/output_* | pretrain-3 |
 | 4  | May 14, 20   | -          |  xlarge    | 128        | 3.6M       | 400k       | node-3    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain4/output_* | pretrain4  |
 | 5  | May 16, 20   | -          |  base      | 512        | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain5/output_* | pretrain-5 |
-| 6  | May 17, 20   | -          |  large     | 512        | 0          | 4M         | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain6/output_* | pretrain-6 |
-| 6  |              | -          |  xxlarge   | --         | 900k       | 100k       | -         | - | - |
-| 7  |              | -          |  BERT-large| 512        | 0          | 4M         | -         | - | - |
+| 6  | May 17, 20   | -          |  large     | 512        | 0          | 4M         | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain6/output_* | 8 |
+| 7  |              | -          |  xxlarge   | --         | 900k       | 100k       | -         | - | - |
+| 8  |              | -          |  BERT-large| 512        | 0          | 4M         | -         | - | - |
 
 * `(1) -> max sequence length 128`
 * `(2) -> max sequence length 512`
