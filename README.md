@@ -10,7 +10,14 @@ Here is pretraining loss:
 ![Pretraining Loss](./images/loss.svg)
 
 ## Pretrained models with Transformers
-Coming soon!
+Now you can use Pretrained ALBERT Mongolian in [Transformers](https://github.com/huggingface/transformers)
+```python
+import torch
+from transformers import AlbertTokenizer, AlbertForMaskedLM
+
+tokenizer = AlbertTokenizer.from_pretrained('bayartsogt/albert-mongolian')
+model = AlbertForMaskedLM.from_pretrained('bayartsogt/albert-mongolian')
+```
 
 ## Fine-tuning
 
