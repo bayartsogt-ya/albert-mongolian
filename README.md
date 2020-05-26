@@ -130,9 +130,10 @@ python -m albert.run_pretraining \
 ## Reference
 1. [ALBERT - official repo](https://github.com/google-research/albert)
 2. [WikiExtrator](https://github.com/attardi/wikiextractor)
-3. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
-4. [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
-4. [You's paper](https://arxiv.org/abs/1904.00962)
+3. [Mongolian BERT](https://github.com/tugstugi/mongolian-bert)
+4. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
+5. [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
+6. [You's paper](https://arxiv.org/abs/1904.00962)
 
 ## Citation
 ```
