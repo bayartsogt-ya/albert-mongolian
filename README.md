@@ -4,14 +4,17 @@ ALBERT for Mongolian
 ## Pretrained models
 This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
 
-Here we plannig to put pretraining loss
+[Pretrained BERT model and trained SentencePiece model](#)
+
+Here is pretraining loss:
 ![Pretraining Loss](./images/loss.svg)
 
 ## Pretrained models with Transformers
+Coming soon!
 
 ## Fine-tuning
 
-You can easily fine-tuning ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
+You can easily fine-tuning **ALBERT-Mongolian** using [Official repo of ALBERT](https://github.com/google-research/albert).
 
 Model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
 
@@ -124,11 +127,11 @@ python -m albert.run_pretraining \
     --num_tpu_cores=8
 ```
 
-
 ## Reference
 1. [ALBERT - official repo](https://github.com/google-research/albert)
 2. [WikiExtrator](https://github.com/attardi/wikiextractor)
 3. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
+4. [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
 4. [You's paper](https://arxiv.org/abs/1904.00962)
 
 ## Citation
@@ -142,5 +145,3 @@ python -m albert.run_pretraining \
   howpublished = {\url{https://github.com/bayartsogt-ya/albert-mongolian/}}
 }
 ```
-
-## Thank you
