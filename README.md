@@ -1,32 +1,60 @@
 # ALBERT-Mongolian
 ALBERT for Mongolian
 
-## Dev Notes
-**TODO**
-- [ ] uncased sentencepiece training
-- [ ] uncased tf record build
-- [ ] uncased albert-base training (maybe on tpu v2?)
-
-**Training log:**
-Tensorboard Link => https://colab.research.google.com/drive/1QVRmC73yImJL1U0VvhcbhVmHoONKZYVO?authuser=1#scrollTo=dwin7ZHipLou
-
-| No | Started Date | Ended Date | model size | batch size | seq128 (1) | seq512 (2) | tpu name  | output dir | tmux name |
-| -- | --           | --         |    --      |     --     | --         | --         | --        | --         | --        |
-| 1  | May 13, 20   | -          |  base      | 512        | 0          | 1M         | tfrc-v3-1 | gs://bucket-97tsogoo-gmail/pretrain/albert/output | 2 |
-| 2  | May 14, 20   | -          |  base      | 512        | 900k       | 100k       | node-1    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain1/output_* | pretrain-1 |
-| 3  | May 14, 20   | -          |  large     | 512        | 900k       | 100k       | node-2    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain3/output_* | pretrain-3 |
-| 4  | May 14, 20   | -          |  xlarge    | 128        | 3.6M       | 400k       | node-3    | gs://bucket-97tsogoo-gmail/pretrain/albert/pretrain4/output_* | pretrain4 |
-| 5  | not started  | -          |  base      | 512        | 0          | 4M         | -         | this will continue training #1 | - |
-| 6  |              | -          |  xxlarge   | --         | 900k       | 100k       | -         | - | - |
-| 7  |              | -          |  BERT-large| 512        | 0          | 4M         | -         | - | - |
-
-* `(1) -> max sequence length 128`
-* `(2) -> max sequence length 512`
-
-This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
+## Pretrained models
+This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
 
 Here we plannig to put pretraining loss
 ![Pretraining Loss](./images/loss.svg)
+
+## Pretrained models with Transformers
+
+## Fine-tuning
+
+You can easily fine-tuning ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
+
+Model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
+
+While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
+
+(Please notice that we using different test set here)
+* ALBERT-Mongolian:
+```
+                          precision    recall  f1-score   support
+
+            байгал орчин       0.83      0.76      0.80       483
+               боловсрол       0.79      0.75      0.77       420
+                   спорт       0.98      0.96      0.97      1391
+               технологи       0.85      0.83      0.84       543
+                 улс төр       0.88      0.87      0.87      1336
+              урлаг соёл       0.89      0.94      0.91       726
+                   хууль       0.87      0.83      0.85       840
+             эдийн засаг       0.80      0.84      0.82      1265
+              эрүүл мэнд       0.84      0.90      0.87       562
+
+                accuracy                           0.87      7566
+               macro avg       0.86      0.85      0.86      7566
+            weighted avg       0.87      0.87      0.87      7566
+```
+
+* BERT-Mongolian: from [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
+```
+                          precision    recall  f1-score   support
+
+            байгал орчин       0.82      0.84      0.83       999
+               боловсрол       0.91      0.70      0.79       873
+                   спорт       0.97      0.98      0.97      2736
+               технологи       0.91      0.85      0.88      1102
+                 улс төр       0.87      0.86      0.86      2647
+              урлаг соёл       0.88      0.96      0.92      1457
+                   хууль       0.86      0.85      0.86      1651
+             эдийн засаг       0.84      0.87      0.85      2509
+              эрүүл мэнд       0.90      0.90      0.90      1159
+
+                accuracy                           0.88     15133
+               macro avg       0.88      0.87      0.87     15133
+            weighted avg       0.88      0.88      0.88     15133
+```
 
 ## Pretrain from Scratch
 
@@ -96,20 +124,12 @@ python -m albert.run_pretraining \
     --num_tpu_cores=8
 ```
 
-## Evaluation
-### TODO after pretraining done
-- [ ] Loss Analysis 
-- [ ] Comparison with Mongolian BERT and mBERT
-- [ ] Benchmark цэгцлэх (Eduge classification, MN NER etc)
-- [ ] Pre-trained model paper? https://arxiv.org/abs/1912.00690 ...
-- [ ] ...
 
 ## Reference
 1. [ALBERT - official repo](https://github.com/google-research/albert)
 2. [WikiExtrator](https://github.com/attardi/wikiextractor)
 3. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
 4. [You's paper](https://arxiv.org/abs/1904.00962)
-5. ...
 
 ## Citation
 ```
