@@ -26,7 +26,7 @@ Tensorboard Link => https://colab.research.google.com/drive/1QVRmC73yImJL1U0Vvhc
 This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Japanese wikipedia corpus from [Wikimedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
 
 Here we plannig to put pretraining loss
-![Pretraining Loss](./images/pretraining_loss.png)
+![Pretraining Loss](./images/loss.svg)
 
 ## Pretrain from Scratch
 
