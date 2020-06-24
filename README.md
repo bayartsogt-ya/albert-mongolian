@@ -1,9 +1,5 @@
 # ALBERT-Mongolian
-This repo provides pretrained ALBERT-base model and SentencePiece model for Mongolian text corpus, which is provided by [Mongolian BERT repository](https://github.com/tugstugi/mongolian-bert). Data used in this project is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
-
-[ALBERT](https://arxiv.org/abs/1909.11942) is "A Lite" version of BERT, a popular unsupervised language representation learning algorithm. ALBERT uses parameter-reduction techniques that allow for large-scale configurations, overcome previous memory limitations, and achieve better behavior with respect to model degradation.
-
-[SentencePiece](https://arxiv.org/abs/1808.06226) is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training.
+This repo provides pretrained ALBERT model ("A Lite" version of BERT) and SentencePiece model (unsupervised text tokenizer and detokenizer) train in Mongolian text corpus, which is provided by [Mongolian BERT repository](https://github.com/tugstugi/mongolian-bert).
 
 ## Pretrained models
 [Pretrained BERT model and trained SentencePiece model](https://huggingface.co/bayartsogt/albert-mongolian)
