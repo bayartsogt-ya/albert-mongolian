@@ -1,15 +1,17 @@
 # ALBERT-Mongolian
-ALBERT for Mongolian
+This repo provides pretrained ALBERT-base model and SentencePiece model for Mongolian text corpus, which is provided by [Mongolian BERT repository](https://github.com/tugstugi/mongolian-bert). Data used in this project is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
+
+[ALBERT](https://arxiv.org/abs/1909.11942) is "A Lite" version of BERT, a popular unsupervised language representation learning algorithm. ALBERT uses parameter-reduction techniques that allow for large-scale configurations, overcome previous memory limitations, and achieve better behavior with respect to model degradation.
+
+[SentencePiece](https://arxiv.org/abs/1808.06226) is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training.
 
 ## Pretrained models
-This repo provides pretrained ALBERT model and trained SentencePiece model for Mongolia text. Training data is the Mongolian wikipedia corpus from [Wikipedia Downloads](https://dumps.wikimedia.org/mnwiki/20200501/) and Mongolian News corpus.
-
-[Pretrained BERT model and trained SentencePiece model](#)
+[Pretrained BERT model and trained SentencePiece model](https://huggingface.co/bayartsogt/albert-mongolian)
 
 Here is pretraining loss:
 ![Pretraining Loss](./images/loss.svg)
 
-## Pretrained models with Transformers
+### Transformers usage
 Now you can use Pretrained ALBERT Mongolian in [Transformers](https://github.com/huggingface/transformers)
 ```python
 import torch
@@ -19,11 +21,18 @@ tokenizer = AlbertTokenizer.from_pretrained('bayartsogt/albert-mongolian')
 model = AlbertForMaskedLM.from_pretrained('bayartsogt/albert-mongolian')
 ```
 
+### Experiment with ALBERT-Mongolian
+Simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. You can follow up using the link below:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=m-iVftIlRyU&t=6215s
+" target="_blank"><img src="http://img.youtube.com/vi/m-iVftIlRyU/0.jpg" 
+alt="AWS-Mongolians e-meetup #3" width="240" height="180" border="10" /></a>
+
 ## Fine-tuning
 
-You can easily fine-tuning **ALBERT-Mongolian** using [Official repo of ALBERT](https://github.com/google-research/albert).
+You can easily fine-tuning ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
 
-Model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
+The model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
 
 While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
 
@@ -141,6 +150,7 @@ python -m albert.run_pretraining \
 4. [ALBERT - Japanese](https://github.com/alinear-corp/albert-japanese)
 5. [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
 6. [You's paper](https://arxiv.org/abs/1904.00962)
+7. [AWS-Mongolia e-meetup #3](https://www.youtube.com/watch?v=m-iVftIlRyU)
 
 ## Citation
 ```
