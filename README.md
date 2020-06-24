@@ -22,15 +22,19 @@ model = AlbertForMaskedLM.from_pretrained('bayartsogt/albert-mongolian')
 ```
 
 ### Experiment with ALBERT-Mongolian
-Simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. You can follow up using the link below:
+
+Simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. 
+You can follow up using links below:
+* notebook: [ALBERT_Mongolian_MLM.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_MLM.ipynb)
+* video tutorial:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=m-iVftIlRyU&t=6215s
-" target="_blank"><img src="http://img.youtube.com/vi/m-iVftIlRyU/0.jpg" 
+" target="_parent"><img src="http://img.youtube.com/vi/m-iVftIlRyU/0.jpg" 
 alt="AWS-Mongolians e-meetup #3" width="240" height="180" border="10" /></a>
 
-## Fine-tuning
+## Results
 
-You can easily fine-tuning ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
+You can easily *fine-tune* ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
 
 The model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
 
