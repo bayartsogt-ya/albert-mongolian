@@ -33,8 +33,6 @@ alt="AWS-Mongolians e-meetup #3" width="240" height="180" border="10" /></a>
 
 ## Results
 
-You can easily *fine-tune* ALBERT-Mongolian using [Official repo of ALBERT](https://github.com/google-research/albert).
-
 The model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
 
 While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
