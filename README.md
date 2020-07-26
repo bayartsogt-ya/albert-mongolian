@@ -18,10 +18,13 @@ model = AlbertForMaskedLM.from_pretrained('bayartsogt/albert-mongolian')
 ```
 
 ### Experiment with ALBERT-Mongolian
+There are simple usages of the pretrained model
 
-Simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. 
+* Text classification using TPU on Colab: [ALBERT_Mongolian_text_classification.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_text_classification.ipynb)
+
+Another simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. 
 You can follow up using links below:
-* notebook: [ALBERT_Mongolian_MLM.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_MLM.ipynb)
+* Masked Language Modeling (MLM) on Colab: [ALBERT_Mongolian_MLM.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_MLM.ipynb)
 * video tutorial:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=m-iVftIlRyU&t=6215s
@@ -36,24 +39,23 @@ The model also evaluated on a simple Mongolian text classification problem with 
 
 While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
 
-(Please notice that we using different test set here)
 * ALBERT-Mongolian:
 ```
                           precision    recall  f1-score   support
 
-            байгал орчин       0.83      0.76      0.80       483
-               боловсрол       0.79      0.75      0.77       420
-                   спорт       0.98      0.96      0.97      1391
-               технологи       0.85      0.83      0.84       543
-                 улс төр       0.88      0.87      0.87      1336
-              урлаг соёл       0.89      0.94      0.91       726
-                   хууль       0.87      0.83      0.85       840
-             эдийн засаг       0.80      0.84      0.82      1265
-              эрүүл мэнд       0.84      0.90      0.87       562
+            байгал орчин       0.85      0.83      0.84       999
+               боловсрол       0.80      0.80      0.80       873
+                   спорт       0.98      0.98      0.98      2736
+               технологи       0.88      0.93      0.91      1102
+                 улс төр       0.92      0.85      0.89      2647
+              урлаг соёл       0.93      0.94      0.94      1457
+                   хууль       0.89      0.87      0.88      1651
+             эдийн засаг       0.83      0.88      0.86      2509
+              эрүүл мэнд       0.89      0.92      0.90      1159
 
-                accuracy                           0.87      7566
-               macro avg       0.86      0.85      0.86      7566
-            weighted avg       0.87      0.87      0.87      7566
+                accuracy                           0.90     15133
+               macro avg       0.89      0.89      0.89     15133
+            weighted avg       0.90      0.90      0.90     15133
 ```
 
 * BERT-Mongolian: from [Mongolian Text Classification](https://github.com/sharavsambuu/mongolian-text-classification)
