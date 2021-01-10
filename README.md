@@ -1,11 +1,18 @@
 # ALBERT-Mongolian
 This repo provides pretrained ALBERT model ("A Lite" version of BERT) and SentencePiece model (unsupervised text tokenizer and detokenizer) trained on Mongolian text corpus.
 
-## Pretrained models
+Contents:
+- [x] [Access to Pretrained models](#access-to-pretrained-models)
+- [x] [Tutorials](#tutorials)
+- [x] [Results](#results)
+- [x] [Reproduce](#reproduce)
+- [x] [Reference](#reference)
+- [x] [Citation](#citation)
+
+## Access to Pretrained models
 [Pretrained BERT model and trained SentencePiece model](https://huggingface.co/bayartsogt/albert-mongolian)
 
-Here is pretraining loss:
-![Pretraining Loss](./images/loss.svg)
+
 
 ### Transformers usage
 Now you can use Pretrained ALBERT Mongolian in [Transformers](https://github.com/huggingface/transformers)
@@ -17,15 +24,11 @@ tokenizer = AlbertTokenizer.from_pretrained('bayartsogt/albert-mongolian')
 model = AlbertForMaskedLM.from_pretrained('bayartsogt/albert-mongolian')
 ```
 
-### Experiment with ALBERT-Mongolian
-There are simple usages of the pretrained model
+## Tutorials
 
-* Text classification using TPU on Colab: [ALBERT_Mongolian_text_classification.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_text_classification.ipynb)
-
-Another simple tutorial of ALBERT-Mongolian is recorded in *AWS-Mongolians e-meetup #3*. 
-You can follow up using links below:
-* Masked Language Modeling (MLM) on Colab: [ALBERT_Mongolian_MLM.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_MLM.ipynb)
-* video tutorial:
+* **`[Colab]`** Text classification using TPU on Colab: [ALBERT_Mongolian_text_classification.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_text_classification.ipynb)
+* **`[Colab]`** Masked Language Modeling (MLM) on Colab: [ALBERT_Mongolian_MLM.ipynb](https://github.com/bayartsogt-ya/ml-tutorials/blob/master/ALBERT_Mongolian_MLM.ipynb)
+* **`[Video]`** AWS-Mongolians e-meetup #3:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=m-iVftIlRyU&t=6215s
 " target="_parent"><img src="http://img.youtube.com/vi/m-iVftIlRyU/0.jpg" 
@@ -33,9 +36,11 @@ alt="AWS-Mongolians e-meetup #3" width="240" height="180" border="10" /></a>
 
 ## Results
 
-The model also evaluated on a simple Mongolian text classification problem with [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
-
-While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
+* Problem: Multi-class text classification
+* Domain: News
+* Dataset: [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
+* Comparison: ALBERT-base vs BERT-base
+* Note: `While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).`
 
 * ALBERT-Mongolian:
 ```
@@ -75,8 +80,12 @@ While ALBERT-base is compatible in terms of results shown below, it is over 10 t
             weighted avg       0.88      0.88      0.88     15133
 ```
 
-## Pretrain from Scratch
+## Reproduce
+Pretrain from Scratch:
 You can follow the [PRETRAIN_SCRATCH.md](./PRETRAIN_SCRATCH.md) to reproduce the results.
+
+Here is pretraining loss:
+![Pretraining Loss](./images/loss.svg)
 
 ## Reference
 1. [ALBERT - official repo](https://github.com/google-research/albert)
