@@ -1,21 +1,21 @@
 # ALBERT-Mongolian
+![HuggingFace demo](./images/albert-mongolian-hf-demo.gif)
+
 This repo provides pretrained ALBERT model ("A Lite" version of BERT) and SentencePiece model (unsupervised text tokenizer and detokenizer) trained on Mongolian text corpus.
 
 Contents:
-- [x] [Access to Pretrained models](#access-to-pretrained-models)
+- [x] [Usage](#usage)
 - [x] [Tutorials](#tutorials)
 - [x] [Results](#results)
 - [x] [Reproduce](#reproduce)
 - [x] [Reference](#reference)
 - [x] [Citation](#citation)
 
-## Access to Pretrained models
-[Pretrained BERT model and trained SentencePiece model](https://huggingface.co/bayartsogt/albert-mongolian)
+## Usage
+You can use [`ALBERT-Mongolian`](https://huggingface.co/bayartsogt/albert-mongolian) in both PyTorch and TensorFlow2.0 using [`transformers`](https://github.com/huggingface/transformers) library.
 
+[`link to HuggingFace model card 🤗`](https://huggingface.co/bayartsogt/albert-mongolian)
 
-
-### Transformers usage
-Now you can use Pretrained ALBERT Mongolian in [Transformers](https://github.com/huggingface/transformers)
 ```python
 import torch
 from transformers import AlbertTokenizer, AlbertForMaskedLM
@@ -36,11 +36,15 @@ alt="AWS-Mongolians e-meetup #3" width="240" height="180" border="10" /></a>
 
 ## Results
 
-* Problem: Multi-class text classification
-* Domain: News
-* Dataset: [Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz).
-* Comparison: ALBERT-base vs BERT-base
-* Note: `While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).`
+|Model|Problem|Task|weighted F1|
+|---|---|---|---|
+|ALBERT-base|Text Classification|[Eduge dataset](https://github.com/tugstugi/mongolian-nlp/blob/master/datasets/eduge.csv.gz)|0.90|
+|...|...|...|...|
+
+
+### Comparison between ALBERT and BERT
+Note that While ALBERT-base is compatible in terms of results shown below, it is over 10 times (only 135MB) smaller than BERT-base (1.2GB).
+
 
 * ALBERT-Mongolian:
 ```
